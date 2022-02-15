@@ -14,9 +14,11 @@ require('dotenv').config();
 
 const PORT = process.env.PORT || 4000;
 const app = express();
-app.use(morgan('dev'));
+;
 app.use(cors());
+app.options('*', cors());
 app.use(express.json());
+app.use(morgan('dev'))
 app.use('/api', router);
 
 
@@ -32,6 +34,4 @@ const start  = async () => {
         console.log('error', error);
     }
 }
-
-
 start();
