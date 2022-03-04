@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const sequelize = require('./db');
 const models = require("./models/models");
 const router =  require('./routes/index');
+const routerTest = require('./routes/test.routes');
 const req = require('express/lib/request');
 const errorHandler = require('./middleware/ErrorHandlingMiddleware');
 const morgan = require('morgan');
@@ -18,6 +19,7 @@ app.use(morgan('dev'))
 app.use(cors());
 app.options('*', cors());
 app.use(express.json());
+app.use('/',routerTest);
 app.use('/api', router);
 
 
